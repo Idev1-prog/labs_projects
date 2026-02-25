@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "stl.h"
-#include <vector>
+//#include "stl.h"
+//#include <vector>
 /*
 TEST(STLusing, check_sort) {
 	std::vector<float> v1 = { 1.4, 3, 7.1, 0, 15.3 };

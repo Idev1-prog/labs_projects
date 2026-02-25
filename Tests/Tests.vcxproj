@@ -57,7 +57,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>C:\labcpp\labs\BullsAndCowsLib;C:\labcpp\labs\STL;C:\labcpp\labs\geometry_lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -110,6 +110,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="test_stl.cpp" />
+    <ClCompile Include="test_time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -117,6 +118,9 @@
   <ItemGroup>
     <ProjectReference Include="..\BullsAndCowsLib\BullsAndCowsLib.vcxproj">
       <Project>{06f839b8-73cf-4f06-a8e1-b680e4ad6d95}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CTime\CTime.vcxproj">
+      <Project>{846068f6-9af2-4f33-ae57-479f8df0dbd6}</Project>
     </ProjectReference>
     <ProjectReference Include="..\geometry_lib\geometry_lib.vcxproj">
       <Project>{4557cc3a-5af2-4fce-a79f-d7ba17819227}</Project>
