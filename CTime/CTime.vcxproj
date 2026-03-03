@@ -18,22 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BullsAndCowsLib\BullsAndCowsLib.vcxproj">
-      <Project>{06f839b8-73cf-4f06-a8e1-b680e4ad6d95}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\geometry_lib\geometry_lib.vcxproj">
-      <Project>{4557cc3a-5af2-4fce-a79f-d7ba17819227}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{493e880f-bd2b-40d0-9c0d-713ce11ebc62}</ProjectGuid>
-    <RootNamespace>Applications</RootNamespace>
+    <ProjectGuid>{846068f6-9af2-4f33-ae57-479f8df0dbd6}</ProjectGuid>
+    <RootNamespace>CTime</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -51,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -113,7 +102,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\labcpp\labs\BullsAndCowsLib;C:\labcpp\labs\geometry_lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,6 +122,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="CTime.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CTime.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
