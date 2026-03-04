@@ -57,7 +57,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test_bulls_and_cows.cpp" />
+    <ClCompile Include="test_complex.cpp" />
     <ClCompile Include="test_geometry.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -118,6 +119,9 @@
   <ItemGroup>
     <ProjectReference Include="..\BullsAndCowsLib\BullsAndCowsLib.vcxproj">
       <Project>{06f839b8-73cf-4f06-a8e1-b680e4ad6d95}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Complex\Complex.vcxproj">
+      <Project>{e952cc98-0059-4fdf-92d6-5c8402ce4bb5}</Project>
     </ProjectReference>
     <ProjectReference Include="..\CTime\CTime.vcxproj">
       <Project>{846068f6-9af2-4f33-ae57-479f8df0dbd6}</Project>
