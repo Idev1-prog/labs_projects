@@ -41,32 +41,56 @@ void Complex::im(double imaginary) {
 	_im = imaginary;
 }
 
-Complex Complex::operator+(const Complex& other) {
-	return Complex(_im += other._im, _re += other._re);
+Complex Complex::operator +(const Complex& other) const {
+	return Complex(_re + other._re, _im + other._im);
 }
 
-Complex Complex::operator-(const Complex& other) {
-	return Complex(_im -= other._im, _re -= other._re);
+Complex Complex::operator -(const Complex& other) const {
+	return Complex(_re - other._re, _im - other._im);
 }
 
-Complex Complex::operator*(const Complex& other) {
-	return Complex(_im *= other._im, _re *= other._re);
+Complex Complex::operator *(const Complex& other) const {
+	return Complex(
+		_re * other._re - _im * other._im,
+		_re * other._im + _im * other._re
+	);
 }
 
-//Complex Complex::operator/(const Complex& other) {
-//	return Complex(_im += other._im, _re += other._re);
-//} TBD
-
-Complex Complex::operator-=(const Complex& other) {
-	Complex ex(*this);
-	ex._im -= other._im;
-	ex._re -= other._re;
-	return ex;
+Complex& Complex::operator +=(const Complex& other) {
+	_re += other._re;
+	_im += other._im;
+	return *this;
 }
 
-Complex Complex::operator+=(const Complex& other) {
-	Complex ex(*this);
-	ex._im += other._im;
-	ex._re += other._re;
-	return ex;
+Complex& Complex::operator -=(const Complex& other) {
+	_re -= other._re;
+	_im -= other._im;
+	return *this;
+}
+
+Complex& Complex::operator=(const Complex& other) {
+	if (this != &other) {
+		_re = other._re;
+		_im = other._im;
+	}
+	return *this;
+}
+
+Complex Complex::operator/(const Complex& other) const {
+
+	double denominator = other._re * other._re + other._im * other._im;
+
+	if (denominator == 0) {
+		throw std::runtime_error("Division by zero complex number");
+	}
+
+	double real_part = (_re * other._re + _im * other._im) / denominator;
+	double imag_part = (_im * other._re - _re * other._im) / denominator;
+
+	return Complex(real_part, imag_part);
+}
+
+Complex& Complex::operator/=(const Complex& other) {
+	*this = *this / other;
+	return *this;
 }
