@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Complex", "Complex\Complex.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fraction", "Fraction\Fraction.vcxproj", "{83479AA8-9B41-4A74-BF5A-952803696829}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CDate", "CDate\CDate.vcxproj", "{1FE236BC-11C8-4B05-9E72-5F3B6AA090F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -101,6 +103,14 @@ Global
 		{83479AA8-9B41-4A74-BF5A-952803696829}.Release|x64.Build.0 = Release|x64
 		{83479AA8-9B41-4A74-BF5A-952803696829}.Release|x86.ActiveCfg = Release|Win32
 		{83479AA8-9B41-4A74-BF5A-952803696829}.Release|x86.Build.0 = Release|Win32
+		{1FE236BC-11C8-4B05-9E72-5F3B6AA090F4}.Debug|x64.ActiveCfg = Debug|x64
+		{1FE236BC-11C8-4B05-9E72-5F3B6AA090F4}.Debug|x64.Build.0 = Debug|x64
+		{1FE236BC-11C8-4B05-9E72-5F3B6AA090F4}.Debug|x86.ActiveCfg = Debug|Win32
+		{1FE236BC-11C8-4B05-9E72-5F3B6AA090F4}.Debug|x86.Build.0 = Debug|Win32
+		{1FE236BC-11C8-4B05-9E72-5F3B6AA090F4}.Release|x64.ActiveCfg = Release|x64
+		{1FE236BC-11C8-4B05-9E72-5F3B6AA090F4}.Release|x64.Build.0 = Release|x64
+		{1FE236BC-11C8-4B05-9E72-5F3B6AA090F4}.Release|x86.ActiveCfg = Release|Win32
+		{1FE236BC-11C8-4B05-9E72-5F3B6AA090F4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
