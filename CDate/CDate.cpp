@@ -33,11 +33,11 @@ int CDate::daysInMonth(int month, int year) const {
 }
 
 CDate::CDate(int day, int month, int year) {
-    if (year < 1) throw std::out_of_range("√од должен быть положительным");
-    if (month < 1 || month > 12) throw std::out_of_range("ћес€ц должен быть от 1 до 12");
+    if (year < 1) throw std::out_of_range("");
+    if (month < 1 || month > 12) throw std::out_of_range("");
 
     int maxDays = daysInMonth(month, year);
-    if (day < 1 || day > maxDays) throw std::out_of_range("ƒень не соответствует мес€цу");
+    if (day < 1 || day > maxDays) throw std::out_of_range("");
 
     _day = day;
     _month = month;
@@ -47,10 +47,10 @@ CDate::CDate(int day, int month, int year) {
 CDate::CDate(const CDate& other) : _day(other._day), _month(other._month), _year(other._year) {}
 
 CDate::CDate(int day, int month) {
-    if (month < 1 || month > 12) throw std::out_of_range("ћес€ц должен быть от 1 до 12");
+    if (month < 1 || month > 12) throw std::out_of_range("");
 
     int maxDays = daysInMonth(month, 1970);
-    if (day < 1 || day > maxDays) throw std::out_of_range("ƒень не соответствует мес€цу");
+    if (day < 1 || day > maxDays) throw std::out_of_range("");
 
     _day = day;
     _month = month;
@@ -59,12 +59,12 @@ CDate::CDate(int day, int month) {
 
 void CDate::day(int day) {
     int maxDays = daysInMonth(_month, _year);
-    if (day < 1 || day > maxDays) throw std::out_of_range("ƒень не соответствует мес€цу");
+    if (day < 1 || day > maxDays) throw std::out_of_range("");
     _day = day;
 }
 
 void CDate::month(int month) {
-    if (month < 1 || month > 12) throw std::out_of_range("ћес€ц должен быть от 1 до 12");
+    if (month < 1 || month > 12) throw std::out_of_range("");
 
     int maxDays = daysInMonth(month, _year);
     if (_day > maxDays) {
@@ -74,7 +74,7 @@ void CDate::month(int month) {
 }
 
 void CDate::year(int year) {
-    if (year < 1) throw std::out_of_range("√од должен быть положительным");
+    if (year < 1) throw std::out_of_range("");
 
     int maxDays = daysInMonth(_month, year);
     if (_day > maxDays) {
