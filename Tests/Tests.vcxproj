@@ -57,7 +57,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -102,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test_bulls_and_cows.cpp" />
+    <ClCompile Include="test_complex.cpp" />
+    <ClCompile Include="test_date.cpp" />
+    <ClCompile Include="test_fraction.cpp" />
     <ClCompile Include="test_geometry.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -119,8 +122,17 @@
     <ProjectReference Include="..\BullsAndCowsLib\BullsAndCowsLib.vcxproj">
       <Project>{06f839b8-73cf-4f06-a8e1-b680e4ad6d95}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\CDate\CDate.vcxproj">
+      <Project>{1fe236bc-11c8-4b05-9e72-5f3b6aa090f4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Complex\Complex.vcxproj">
+      <Project>{e952cc98-0059-4fdf-92d6-5c8402ce4bb5}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\CTime\CTime.vcxproj">
       <Project>{846068f6-9af2-4f33-ae57-479f8df0dbd6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Fraction\Fraction.vcxproj">
+      <Project>{83479aa8-9b41-4a74-bf5a-952803696829}</Project>
     </ProjectReference>
     <ProjectReference Include="..\geometry_lib\geometry_lib.vcxproj">
       <Project>{4557cc3a-5af2-4fce-a79f-d7ba17819227}</Project>
