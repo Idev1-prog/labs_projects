@@ -1,7 +1,8 @@
 #include <iostream>
 #include "geometry.h"
 #include "bulls_and_cows.h"
-#define BULLS_AND_COWS
+//#define BULLS_AND_COWS
+#define GEOMETRY
 using std::cout;
 using std::cin;
 using std::endl;

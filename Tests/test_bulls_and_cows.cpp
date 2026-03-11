@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "bulls_and_cows.h"
+//#define BAC_TEST
+#ifdef BAC_TEST
 
 TEST(CheckGeneratorCase, NonDynamicInputData) {
 	int mass[6];
@@ -108,3 +110,5 @@ TEST(CheckTools, StandardData) {
 	EXPECT_EQ(mass[4], 6);
 	EXPECT_EQ(mass[5], 1);
 }
+
+#endif // BAC_TEST

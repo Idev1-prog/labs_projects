@@ -65,7 +65,7 @@ Posision_status* code_status(Circle circleA, Circle circleB) {
 
 
 void encode_status(Posision_status* statuses) {
-	cout << "Статусы окружности:" << endl;
+	cout << "Circle statuses:" << endl;
 
 	for (int i = 0; i < 5; i++) {
 		if (statuses[i] != NO_INFO) {
