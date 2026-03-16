@@ -57,7 +57,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\LongNumber;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -112,6 +112,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="test_longnumber.cpp" />
     <ClCompile Include="test_stl.cpp" />
     <ClCompile Include="test_time.cpp" />
   </ItemGroup>
@@ -136,6 +137,9 @@
     </ProjectReference>
     <ProjectReference Include="..\geometry_lib\geometry_lib.vcxproj">
       <Project>{4557cc3a-5af2-4fce-a79f-d7ba17819227}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\LongNumber\LongNumber.vcxproj">
+      <Project>{59629c42-44ec-44c6-871c-74a419a00f9f}</Project>
     </ProjectReference>
     <ProjectReference Include="..\STL\STL.vcxproj">
       <Project>{dcdf3dde-fac9-4d1f-9ad9-82f850293801}</Project>
