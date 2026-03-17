@@ -5,7 +5,7 @@ private:
 	int _month;
 	int _year;
 
-	bool isLeapYear(int year) const;
+	bool is_leap_year(int year) const;
 
 public:
 	CDate();
@@ -25,5 +25,5 @@ public:
 	CDate add_months(int months);
 	CDate add_years(int years);
 
-	int daysInMonth(int month, int year) const;
+	int days_in_month(int month, int year) const;
 };
