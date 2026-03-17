@@ -43,6 +43,48 @@ Fraction::Fraction(int up, int down) {
 	simplify();
 }
 
+Fraction::Fraction(std::string input_str) {
+	input_str.erase(std::remove(input_str.begin(), input_str.end(), ' '), input_str.end());
+
+	if (input_str.empty()) {
+		throw std::invalid_argument("Empty string");
+	}
+
+	size_t pos = input_str.find('/');
+
+	if (pos == std::string::npos) { // npos - separator not found
+		try {
+			_up = std::stoi(input_str);
+			_down = 1;
+		}
+		catch (const std::exception& e) {
+			throw std::invalid_argument("Invalid number format");
+		}
+	}
+	else {
+		std::string left = input_str.substr(0, pos);
+		std::string right = input_str.substr(pos + 1);
+
+		if (left.empty() || right.empty()) {
+			throw std::invalid_argument("Invalid fraction format");
+		}
+
+		try {
+			_up = std::stoi(left);
+			_down = std::stoi(right);
+
+			if (_down == 0) {
+				throw std::invalid_argument("division by zero");
+			}
+
+			simplify();
+		}
+		catch (const std::exception& e) {
+			throw std::invalid_argument("Invalid number format");
+		}
+	}
+}
+
 void Fraction::up(int up) noexcept {
 	_up = up;
 	simplify();

@@ -8,7 +8,7 @@ public:
 	Fraction() : _up(0), _down(1) {};
 	Fraction(int, int);
 	Fraction(int up) : _up(up), _down(1) {}; // thanks to it, the compiler will convert objects to the required type
-	//Fraction(std::string) TBD;
+	Fraction(std::string);
 	Fraction(const Fraction& other) : _up(other._up), _down(other._down) {};
 
 	inline int up() const noexcept { return _up; };

@@ -15,18 +15,18 @@ int CDate::year() const noexcept {
     return _year;
 }
 
-bool CDate::isLeapYear(int year) const {
+bool CDate::is_leap_year(int year) const {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
-int CDate::daysInMonth(int month, int year) const {
+int CDate::days_in_month(int month, int year) const {
     switch (month) {
     case 1: case 3: case 5: case 7: case 8: case 10: case 12:
         return 31;
     case 4: case 6: case 9: case 11:
         return 30;
     case 2:
-        return isLeapYear(year) ? 29 : 28;
+        return is_leap_year(year) ? 29 : 28;
     default:
         return 0;
     }
@@ -36,7 +36,7 @@ CDate::CDate(int day, int month, int year) {
     if (year < 1) throw std::out_of_range("");
     if (month < 1 || month > 12) throw std::out_of_range("");
 
-    int maxDays = daysInMonth(month, year);
+    int maxDays = days_in_month(month, year);
     if (day < 1 || day > maxDays) throw std::out_of_range("");
 
     _day = day;
@@ -49,7 +49,7 @@ CDate::CDate(const CDate& other) : _day(other._day), _month(other._month), _year
 CDate::CDate(int day, int month) {
     if (month < 1 || month > 12) throw std::out_of_range("");
 
-    int maxDays = daysInMonth(month, 1970);
+    int maxDays = days_in_month(month, 1970);
     if (day < 1 || day > maxDays) throw std::out_of_range("");
 
     _day = day;
@@ -58,7 +58,7 @@ CDate::CDate(int day, int month) {
 }
 
 void CDate::day(int day) {
-    int maxDays = daysInMonth(_month, _year);
+    int maxDays = days_in_month(_month, _year);
     if (day < 1 || day > maxDays) throw std::out_of_range("");
     _day = day;
 }
@@ -66,7 +66,7 @@ void CDate::day(int day) {
 void CDate::month(int month) {
     if (month < 1 || month > 12) throw std::out_of_range("");
 
-    int maxDays = daysInMonth(month, _year);
+    int maxDays = days_in_month(month, _year);
     if (_day > maxDays) {
         _day = maxDays;
     }
@@ -76,7 +76,7 @@ void CDate::month(int month) {
 void CDate::year(int year) {
     if (year < 1) throw std::out_of_range("");
 
-    int maxDays = daysInMonth(_month, year);
+    int maxDays = days_in_month(_month, year);
     if (_day > maxDays) {
         _day = maxDays;
     }
@@ -87,7 +87,7 @@ CDate CDate::add_days(int days) {
     CDate result(*this);
 
     while (days > 0) {
-        int currentMonthDays = daysInMonth(result._month, result._year);
+        int currentMonthDays = days_in_month(result._month, result._year);
         if (result._day + days <= currentMonthDays) {
             result._day += days;
             days = 0;
@@ -114,7 +114,7 @@ CDate CDate::add_months(int months) {
         result._year++;
     }
 
-    int maxDays = daysInMonth(result._month, result._year);
+    int maxDays = days_in_month(result._month, result._year);
     if (result._day > maxDays) {
         result._day = maxDays;
     }
@@ -127,7 +127,7 @@ CDate CDate::add_years(int years) {
 
     result._year += years;
 
-    if (result._month == 2 && result._day == 29 && !isLeapYear(result._year)) {
+    if (result._month == 2 && result._day == 29 && !is_leap_year(result._year)) {
         result._day = 28;
     }
 

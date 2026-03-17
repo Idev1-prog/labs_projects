@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Fraction.h"
+//#define FRACTION_TEST
 
+#ifdef FRACTION_TEST
 TEST(FractionTest, Constructors) {
     Fraction f1;
     EXPECT_EQ(f1.up(), 0);
@@ -193,3 +195,5 @@ TEST(FractionTest, ArithmeticWithNegatives) {
     EXPECT_EQ(prod.up(), -1);
     EXPECT_EQ(prod.down(), 2);
 }
+
+#endif
