@@ -216,3 +216,44 @@ bool LongNumber::operator<=(const LongNumber& other) const {
 bool LongNumber::operator>=(const LongNumber& other) const {
 	return !(*this < other);
 }
+
+char LongNumber::operator[](const size_t i) const noexcept{
+	if (_sign) return _number[i];
+	else {
+		return (i != 0) ? _number[i - 1] : '-';
+	}
+}
+
+LongNumber LongNumber::operator++(int) noexcept {
+	LongNumber ex(*this);
+	*this += LongNumber("1");
+	return ex;
+}
+
+LongNumber LongNumber::operator--(int) noexcept {
+	LongNumber ex(*this);
+	*this -= LongNumber("1");
+	return ex;
+}
+
+LongNumber& LongNumber::operator++() noexcept {
+	*this += LongNumber("1");
+	return *this;
+}
+
+LongNumber& LongNumber::operator--() noexcept {
+	*this -= LongNumber("1");
+	return *this;
+}
+
+std::ostream& operator<<(std::ostream& out, const LongNumber& num) {
+	out << num.number();
+	return out;
+}
+
+std::istream& operator>>(std::istream& in, LongNumber num) {
+	std::string str;
+	std::getline(in, str);
+	num.number(str);
+	return in;
+}
