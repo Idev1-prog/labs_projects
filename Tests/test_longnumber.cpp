@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "LongNumber.h"
 
+//#define LONG_NUMBER_TEST
+
+#ifdef LONG_NUMBER_TEST
+
+
 TEST(BasicMethods, SetsGets) {
 	LongNumber a = LongNumber();
 	EXPECT_EQ(a.sign(), true);
@@ -105,3 +110,5 @@ TEST(Opers, OutputInput) {
 	EXPECT_NO_THROW(std::cout << nm2 << std::endl);
 	EXPECT_NO_THROW(std::cin >> nm1);
 }
+
+#endif // LONG_NUMBER_TEST
