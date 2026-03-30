@@ -37,4 +37,14 @@ public:
 	bool operator<=(const LongNumber&) const;
 
 	friend LongNumber operator-(LongNumber);
+
+	char operator[](const size_t) const noexcept;
+	LongNumber operator++(int) noexcept;
+	LongNumber operator--(int) noexcept;
+
+	LongNumber& operator++() noexcept;
+	LongNumber& operator--() noexcept;
+
+	friend std::ostream& operator<<(std::ostream&, const LongNumber&);
+	friend std::istream& operator>>(std::istream&, LongNumber);
 };

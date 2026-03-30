@@ -77,3 +77,31 @@ TEST(SpecialCases, ZeroHandling) {
 	EXPECT_EQ(result.number(), "0");
 	EXPECT_EQ(result.sign(), true);
 }
+
+TEST(Opers, IndexData) {
+	LongNumber nm1("3851");
+	LongNumber nm2("-385151");
+
+	EXPECT_EQ(nm1[0], '3');
+	EXPECT_EQ(nm2[1], '3');
+	EXPECT_EQ(nm2[0], '-');
+}
+
+TEST(Opers, PrefPost) {
+	LongNumber nm1("30");
+	LongNumber nm2("0");
+	EXPECT_EQ((++nm1).number(), "31");
+	EXPECT_EQ((--nm1).number(), "30");
+
+	EXPECT_EQ((nm1++).number(), "30");
+	EXPECT_EQ(nm1.number(), "31");
+
+	EXPECT_EQ((--nm2).sign(), false);
+}
+
+TEST(Opers, OutputInput) {
+	LongNumber nm1("10");
+	LongNumber nm2("-12563");
+	EXPECT_NO_THROW(std::cout << nm2 << std::endl);
+	EXPECT_NO_THROW(std::cin >> nm1);
+}
