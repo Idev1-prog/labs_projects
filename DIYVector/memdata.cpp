@@ -18,6 +18,7 @@ void MemData::clear_memory() noexcept {
 void MemData::set_memory(size_t size) noexcept {
 	clear_memory();
 	_data = new double[size];
+	_capacity = size;
 }
 
 MemData::MemData(size_t size) {
@@ -59,3 +60,42 @@ MemData::~MemData() {
 	_capacity = 0;
 }
 
+void MemData::reset_memory(size_t size, size_t start_index) noexcept {
+	double* buffer = new double[_size];
+	for (size_t i = start_index; i < (_size + start_index); ++i) {
+		buffer[i - start_index] = _data[i];
+	}
+	set_memory(size);
+	std::copy(buffer, buffer + size, _data);
+	delete[] buffer;
+}
+
+MemData& MemData::operator=(const MemData& other) noexcept {
+	if (this == &other) {
+		return *this;
+	}
+
+	set_memory(other._capacity);
+	_size = other._size;
+	_capacity = other._capacity;
+	std::copy(other._data, other._data + _size, _data);
+
+	return *this;
+}
+
+MemData& MemData::operator=(MemData&& other) noexcept {
+	if (this == &other) {
+		return *this;
+	}
+
+	clear_memory();
+	_data = other._data;
+	_capacity = other._capacity;
+	_size = other._size;
+
+	other._data = nullptr;
+	other._capacity = 0;
+	other._size = 0;
+
+	return *this;
+}

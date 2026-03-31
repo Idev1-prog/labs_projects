@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "memdata.h"
 #define AI_TEST
+#define AI_TEST_PLUS
 
 #ifdef AI_TEST
 TEST(MemDataTest, DefaultConstructor) {

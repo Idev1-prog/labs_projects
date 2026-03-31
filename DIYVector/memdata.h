@@ -9,7 +9,7 @@ int calculate_capacity(int);
 
 class MemData {
 private:
-    double* _data = nullptr;             // хранилище данных
+    double* _data = nullptr;   // хранилище данных
     size_t _size;              // размер заполненной части хранилища
     size_t _capacity;          // вместимость хранилища
 public:
@@ -38,11 +38,11 @@ public:
     }
 
     void set_memory(size_t) noexcept;                                         // установка памяти без сохранения данных
-    //void reset_memory(size_t size, size_t start_index = 0) noexcept;          // перевыделение памяти с сохранением данных
+    void reset_memory(size_t size, size_t start_index = 0) noexcept;          // перевыделение памяти с сохранением данных
     void clear_memory() noexcept;                                             // очистка памяти
 
-    //MemData& operator=(const MemData&) noexcept;         // оператор присваивания
-    //MemData& operator=(MemData&&) noexcept;              // оператор присваивания с move-семантикой
+    MemData& operator=(const MemData&) noexcept;         // оператор присваивания
+    MemData& operator=(MemData&&) noexcept;              // оператор присваивания с move-семантикой
 
     //friend class Vector;
 };
