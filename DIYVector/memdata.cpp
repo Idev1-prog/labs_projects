@@ -61,6 +61,7 @@ MemData::~MemData() {
 }
 
 void MemData::reset_memory(size_t size, size_t start_index) noexcept {
+	if (_size > size) _size = size;
 	double* buffer = new double[_size];
 	for (size_t i = start_index; i < (_size + start_index); ++i) {
 		buffer[i - start_index] = _data[i];
