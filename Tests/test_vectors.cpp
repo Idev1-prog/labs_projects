@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "memdata.h"
-//#define AI_TEST
-//#define AI_TEST_PLUS
+#define AI_TEST
+#define AI_TEST_PLUS
 #define MEMDATA_TESTS
 
 #ifdef MEMDATA_TESTS
@@ -68,9 +68,9 @@ TEST(ClassMemData, can_is_full) {
     EXPECT_TRUE(md1.is_full());
 
     MemData md2 = { 1.0, 2.0, 3.0 };
-    md2.clear_memory();
-    EXPECT_EQ(md2.size(), 3);
-    EXPECT_EQ(md2.capacity(), calculate_capacity(3));
+    md2.set_memory(5);
+    EXPECT_EQ(md2.size(), 0);
+    EXPECT_EQ(md2.capacity(), 5);
     EXPECT_FALSE(md2.is_full());
 }
 

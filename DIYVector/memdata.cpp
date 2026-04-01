@@ -12,6 +12,8 @@ void MemData::clear_memory() noexcept {
 	if (_data != nullptr) {
 		delete[] _data;
 		_data = nullptr;
+		_size = 0;
+		_capacity = 0;
 	}
 }
 
@@ -61,13 +63,14 @@ MemData::~MemData() {
 }
 
 void MemData::reset_memory(size_t size, size_t start_index) noexcept {
-	if (_size > size) _size = size;
+	size_t stage_size = _size;
 	double* buffer = new double[_size];
 	for (size_t i = start_index; i < (_size + start_index); ++i) {
 		buffer[i - start_index] = _data[i];
 	}
 	set_memory(size);
 	std::copy(buffer, buffer + size, _data);
+	_size =(stage_size <= size) ? stage_size : size;
 	delete[] buffer;
 }
 

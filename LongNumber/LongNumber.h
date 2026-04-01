@@ -10,7 +10,7 @@ private:
 	std::string add_abs(const std::string& a, const std::string& b) const;
 	std::string sub_abs(const std::string& a, const std::string& b) const;
 public:
-	LongNumber() : _number(""), _sign(true) {};
+	LongNumber() : _number("0"), _sign(true) {};
 	LongNumber(const LongNumber&);
 	LongNumber(std::string);
 	
@@ -19,6 +19,8 @@ public:
 
 	void sign(char);
 	void number(std::string);
+
+	std::string to_string() const;
 
 	LongNumber& operator=(const LongNumber& other);
 
