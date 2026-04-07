@@ -90,6 +90,12 @@ void LongNumber::number(std::string number) {
 	_number = (number[0] != '-') ? number : number.substr(1, number.size() - 1);
 }
 
+std::string LongNumber::to_string() const {
+	std::string s1 = (!_sign) ? "-" : "";
+	std::string s2 = _number;
+	return s1 + s2;
+}
+
 LongNumber& LongNumber::operator=(const LongNumber& other) {
 	if (this != &other) {
 		_number = other._number;
@@ -171,6 +177,7 @@ LongNumber LongNumber::operator*(const LongNumber& other) const { // Comments in
 
 	return final_res;
 }
+
 
 LongNumber& LongNumber::operator+=(const LongNumber& other) {
 	*this = *this + other;

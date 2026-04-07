@@ -57,7 +57,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\LongNumber;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\LongNumber;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\T2390\source\repos\Idev1-prog\labs_projects\DIYVector;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\DIYVector;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\LongNumber;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\LongNumber;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -116,6 +116,7 @@
     <ClCompile Include="test_rightfraction.cpp" />
     <ClCompile Include="test_stl.cpp" />
     <ClCompile Include="test_time.cpp" />
+    <ClCompile Include="test_vectors.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -132,6 +133,9 @@
     </ProjectReference>
     <ProjectReference Include="..\CTime\CTime.vcxproj">
       <Project>{846068f6-9af2-4f33-ae57-479f8df0dbd6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\DIYVector\DIYVector.vcxproj">
+      <Project>{d2408ae1-5475-4211-8ae6-9b521fee31ee}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Fraction\Fraction.vcxproj">
       <Project>{83479aa8-9b41-4a74-bf5a-952803696829}</Project>
