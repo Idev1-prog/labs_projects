@@ -34,6 +34,8 @@ void Fraction::simplify() {
 	}
 }
 
+void Fraction::check_invariant() const {}
+
 Fraction::Fraction(int up, int down) {
 	if (down == 0) {
 		throw std::invalid_argument("division by zero");
@@ -41,6 +43,7 @@ Fraction::Fraction(int up, int down) {
 	_up = up;
 	_down = down;
 	simplify();
+	check_invariant();
 }
 
 Fraction::Fraction(std::string input_str) {
@@ -56,6 +59,8 @@ Fraction::Fraction(std::string input_str) {
 		try {
 			_up = std::stoi(input_str);
 			_down = 1;
+			simplify();
+			check_invariant();
 		}
 		catch (const std::exception& e) {
 			throw std::invalid_argument("Invalid number format");
@@ -78,6 +83,7 @@ Fraction::Fraction(std::string input_str) {
 			}
 
 			simplify();
+			check_invariant();
 		}
 		catch (const std::exception& e) {
 			throw std::invalid_argument("Invalid number format");
@@ -88,6 +94,7 @@ Fraction::Fraction(std::string input_str) {
 void Fraction::up(int up) noexcept {
 	_up = up;
 	simplify();
+	check_invariant();
 }
 
 void Fraction::down(int down) {
@@ -96,9 +103,10 @@ void Fraction::down(int down) {
 	}
 	_down = down;
 	simplify();
+	check_invariant();
 }
 
-std::string Fraction::to_string(){
+std::string Fraction::to_string() const {
 	if (_down == 1) {
 		return std::to_string(_up);
 	}
@@ -107,10 +115,25 @@ std::string Fraction::to_string(){
 	}
 }
 
+std::string Fraction::mixed_form() const {
+	int whole = _up / _down;
+	int remainder = std::abs(_up % _down);
+	if (whole == 0) {
+		return to_string();
+	}
+	else if (remainder == 0) {
+		return std::to_string(whole);
+	}
+	else {
+		return std::to_string(whole) + " " + std::to_string(remainder) + "/" + std::to_string(_down);
+	}
+}
+
 Fraction& Fraction::operator+=(const Fraction& other) {
 	_up = _up * other._down + other._up * _down;
 	_down = _down * other._down;
 	simplify();
+	check_invariant();
 	return *this;
 }
 
@@ -118,6 +141,7 @@ Fraction& Fraction::operator-=(const Fraction& other) {
 	_up = _up * other._down - other._up * _down;
 	_down = _down * other._down;
 	simplify();
+	check_invariant();
 	return *this;
 }
 
@@ -125,6 +149,7 @@ Fraction& Fraction::operator*=(const Fraction& other) {
 	_up *= other._up;
 	_down *= other._down;
 	simplify();
+	check_invariant();
 	return *this;
 }
 
@@ -132,6 +157,7 @@ Fraction& Fraction::operator/=(const Fraction& other) {
 	_up *= other._down;
 	_down *= other._up;
 	simplify();
+	check_invariant();
 	return *this;
 }
 
@@ -141,6 +167,7 @@ Fraction& Fraction::operator=(const Fraction& other) {
 		_down = other._down;
 	}
 	simplify();
+	check_invariant();
 	return *this;
 }
 

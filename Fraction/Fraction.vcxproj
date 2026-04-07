@@ -124,9 +124,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Fraction.cpp" />
+    <ClCompile Include="RightFraction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fraction.h" />
+    <ClInclude Include="RightFraction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

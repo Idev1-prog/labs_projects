@@ -1,9 +1,10 @@
 #pragma once
 #include <string>
 class Fraction {
-private:
+protected:
 	int _up, _down;
 	void simplify();
+	virtual void check_invariant() const;
 public:
 	Fraction() : _up(0), _down(1) {};
 	Fraction(int, int);
@@ -13,15 +14,16 @@ public:
 
 	inline int up() const noexcept { return _up; };
 	inline int down() const noexcept { return _down; };
-	std::string to_string();
+	std::string to_string() const;
+	std::string mixed_form() const;
 
-	void up(int) noexcept;
-	void down(int);
+	virtual void up(int) noexcept;
+	virtual void down(int);
 
-	Fraction& operator+=(const Fraction&);
-	Fraction& operator-=(const Fraction&);
-	Fraction& operator*=(const Fraction&);
-	Fraction& operator/=(const Fraction&);
+	virtual Fraction& operator+=(const Fraction&);
+	virtual Fraction& operator-=(const Fraction&);
+	virtual Fraction& operator*=(const Fraction&);
+	virtual Fraction& operator/=(const Fraction&);
 
 	Fraction& operator=(const Fraction&);
 
