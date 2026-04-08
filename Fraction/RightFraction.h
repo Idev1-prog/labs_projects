@@ -23,6 +23,6 @@ public:
 	inline int up() const noexcept { return _up; };
 	inline int down() const noexcept { return _down; };
 
-	void up(int up) noexcept override;
+	void up(int up)  override;
 	void down(int down) override;
 };

@@ -17,7 +17,7 @@ public:
 	std::string to_string() const;
 	std::string mixed_form() const;
 
-	virtual void up(int) noexcept;
+	virtual void up(int);
 	virtual void down(int);
 
 	virtual Fraction& operator+=(const Fraction&);

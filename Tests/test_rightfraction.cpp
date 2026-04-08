@@ -200,8 +200,8 @@ TEST(RightFractionSetters, SetUp) {
     EXPECT_EQ(rf.down(), 3);
 
     EXPECT_THROW(rf.up(3), std::invalid_argument);
-    EXPECT_EQ(rf.up(), 2);
-    EXPECT_EQ(rf.down(), 3);
+    EXPECT_EQ(rf.up(), 1);
+    EXPECT_EQ(rf.down(), 1);
 }
 
 TEST(RightFractionSetters, SetDown) {

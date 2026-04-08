@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CTime.h"
-//#define TIME_TEST
+#define TIME_TEST
 
 #ifdef TIME_TEST
 
@@ -163,4 +163,11 @@ TEST(CTimeTest, AllFunctionalityCheck) {
     EXPECT_EQ(t5.second(), 0);
 }
 
+TEST(CTimeTest, MinutesOverChar) {
+    CTime t(0, 10, 0);
+    CTime t1 = t.add_minutes(600).add_seconds(120);
+    EXPECT_EQ(t1.hour(), 10);
+    EXPECT_EQ(t1.minute(), 12);
+    EXPECT_EQ(t1.second(), 0);
+}
 #endif // TIME_TEST

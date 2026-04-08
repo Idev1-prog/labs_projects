@@ -91,7 +91,7 @@ Fraction::Fraction(std::string input_str) {
 	}
 }
 
-void Fraction::up(int up) noexcept {
+void Fraction::up(int up) {
 	_up = up;
 	simplify();
 	check_invariant();

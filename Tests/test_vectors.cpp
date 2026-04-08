@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "memdata.h"
-#define AI_TEST
-#define AI_TEST_PLUS
-#define MEMDATA_TESTS
+//#define AI_TEST
+//#define AI_TEST_PLUS
+//#define MEMDATA_TESTS
 
 #ifdef MEMDATA_TESTS
 

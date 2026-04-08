@@ -55,7 +55,7 @@ RightFraction& RightFraction::operator/=(const Fraction& other) {
     return *this;
 }
 
-void RightFraction::up(int up) noexcept {
+void RightFraction::up(int up) {
     Fraction::up(up);
 }
 
