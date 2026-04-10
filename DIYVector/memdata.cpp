@@ -58,8 +58,6 @@ MemData::MemData(MemData&& other) noexcept : _size(other._size), _capacity(other
 
 MemData::~MemData() {
 	clear_memory();
-	_size = 0;
-	_capacity = 0;
 }
 
 void MemData::reset_memory(size_t size, size_t start_index) noexcept {

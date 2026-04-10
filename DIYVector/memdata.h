@@ -5,10 +5,10 @@
 
 int calculate_capacity(int);
 
-//class Vector;
+class Vector;
 
 class MemData {
-private:
+protected:
     double* _data = nullptr;   // хранилище данных
     size_t _size;              // размер заполненной части хранилища
     size_t _capacity;          // вместимость хранилища
@@ -44,5 +44,5 @@ public:
     MemData& operator=(const MemData&) noexcept;         // оператор присваивания
     MemData& operator=(MemData&&) noexcept;              // оператор присваивания с move-семантикой
 
-    //friend class Vector;
+    friend class Vector;
 };

@@ -20,9 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="memdata.h" />
-    <ClInclude Include="vector.h" />
+    <ClInclude Include="DIYVector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DIYVector.cpp" />
     <ClCompile Include="memdata.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

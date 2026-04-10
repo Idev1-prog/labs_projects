@@ -1,0 +1,63 @@
+#pragma once
+
+#include <iostream>
+#include "memdata.h"
+
+class Vector {
+    MemData _mem;         // хранилище данных + размер  + вместимость
+    size_t _front;        // индекс первого элемента
+    size_t _back;         // индекс последнего элемента
+    void advance_front() noexcept; // сдвиг вперед _front
+    void retreat_front() noexcept; // сдвиг назад _front
+    void advance_back() noexcept; // сдвиг вперед _back
+    void retreat_back() noexcept; // сдвиг назад _back
+    size_t get_index(size_t) const noexcept;
+public:
+    Vector(size_t size = 0): // конструктор по размеру + по умолчанию
+        _mem(size), 
+        _front(0), 
+        _back((size > 0) ? size - 1 : 0) {}
+    Vector(std::initializer_list<double> ini) : // конструктор по списку инициализации
+        _mem(ini),
+        _front(0),
+        _back((ini.size() > 0) ? ini.size() - 1 : 0) {}
+    Vector(double* data, size_t size) : // конструктор инициализации
+        _mem(data, size),
+        _front(0),
+        _back((size > 0) ? size - 1 : 0) {}
+    Vector(const Vector& other) : // конструктор копирования
+        _mem(other._mem),
+        _front(other._front),
+        _back(other._back) {}
+    Vector(Vector&&);                        // конструктор с move-семантикой
+    ~Vector() = default;                     // деструктор
+
+    inline bool is_empty()  const noexcept { return _mem.is_empty(); }          // проверка на пустоту
+    inline bool is_full() const noexcept { return _mem.is_full(); }           // проверка на переполнение
+
+    inline size_t size() const noexcept { return _mem.size(); }            // геттер размера
+    inline size_t capacity() const noexcept { return _mem.capacity(); }        // геттер вместимости
+    inline double front() const { return _front; }                    // геттер первого элемента
+    inline double back() const { return _back; }                     // геттер последнего элемента
+
+    inline double& front() { return _mem._data[_front]; }                         // сеттер первого элемента
+    inline double& back() { return _mem._data[_back]; };                          // сеттер последнего элемента
+
+    void push_front(double) noexcept;               // вставка элемента в начало
+    void push_back(double) noexcept;                // вставка элемента в конец
+    void insert(double, size_t);                    // вставка элемента по позиции
+    void pop_front();                               // удаление элемента из начала
+    void pop_back();                                // удаление элемента из конца
+    void erase(size_t);                             // удаление элемента по позиции
+
+    Vector& operator=(const Vector&) noexcept;      // оператор присваивания
+    Vector& operator=(Vector&&) noexcept;           // оператор присваивания с move-семантикой
+
+    double operator[](size_t) const noexcept;       // оператор обращения по индексу константный
+    double& operator[](size_t) noexcept;            // оператор обращения по индексу
+
+    friend std::ostream& operator<<(std::ostream&, const Vector&);     // вывод
+    friend std::istream& operator>>(std::istream&, Vector&);           // ввод
+};
+
+
