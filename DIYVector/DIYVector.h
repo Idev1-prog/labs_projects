@@ -7,6 +7,7 @@ class Vector {
     MemData _mem;         // хранилище данных + размер  + вместимость
     size_t _front;        // индекс первого элемента
     size_t _back;         // индекс последнего элемента
+    void optimize_mem() noexcept;
     void advance_front() noexcept; // сдвиг вперед _front
     void retreat_front() noexcept; // сдвиг назад _front
     void advance_back() noexcept; // сдвиг вперед _back
