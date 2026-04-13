@@ -5,7 +5,7 @@
 
 TEST(CheckGeneratorCase, NonDynamicInputData) {
 	int mass[6];
-	genarate_computer_unique_number(mass, 6);
+	GenarateComputerUniqueNumber(mass, 6);
 	for (int i = 0; i < 6; i++) {
 		for (int j = i - 1; j > 0; j--) {
 			EXPECT_TRUE(mass[i] != mass[j]);
@@ -16,7 +16,7 @@ TEST(CheckGeneratorCase, NonDynamicInputData) {
 
 TEST(CheckGeneratorCase, DynamicInputData) {
 	int* mass = new int[8];
-	genarate_computer_unique_number(mass, 8);
+	GenarateComputerUniqueNumber(mass, 8);
 	for (int i = 0; i < 8; i++) {
 		for (int j = i - 1; j > 0; j--) {
 			EXPECT_TRUE(mass[i] != mass[j]);
@@ -28,13 +28,13 @@ TEST(CheckGeneratorCase, DynamicInputData) {
 
 TEST(CheckGeneratorCase, ZeroInputData) {
 	int* mass = new int[0];
-	ASSERT_ANY_THROW(genarate_computer_unique_number(mass, 0));
+	ASSERT_ANY_THROW(GenarateComputerUniqueNumber(mass, 0));
 	delete []mass;
 }
 
 TEST(CheckGeneratorCase, OverbuffInputData) {
 	int* mass = new int[15];
-	EXPECT_THROW(genarate_computer_unique_number(mass, 15), std::invalid_argument);
+	EXPECT_THROW(GenarateComputerUniqueNumber(mass, 15), std::invalid_argument);
 	delete []mass;
 }
 
@@ -42,7 +42,7 @@ TEST(CheckGeneratorCase, MultiDimensionalInputData) {
 	for (int i = 1; i < 9; i++) {
 		size_t size = i;
 		int* mass = new int[size];
-		genarate_computer_unique_number(mass, size);
+		GenarateComputerUniqueNumber(mass, size);
 		for (int i = 0; i < size; i++) {
 			for (int j = i - 1; j > 0; j--) {
 				EXPECT_TRUE(mass[i] != mass[j]);

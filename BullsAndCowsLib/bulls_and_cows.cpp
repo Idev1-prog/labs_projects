@@ -4,12 +4,12 @@
 //void main() {
 //    srand(time(0));
 //    int mass[5];
-//    genarate_computer_unique_number(mass, 5);
+//    GenarateComputerUniqueNumber(mass, 5);
 //    for (int i =0; i < 5; i++)
 //        std::cout << mass[i];
 //}
 
-void genarate_computer_unique_number(int *number, size_t number_size) {
+void BullsAndCowsGame::GenarateComputerUniqueNumber(int *number, size_t number_size) {
     if (number_size == 0 || number_size > 10) {
         throw std::invalid_argument("A unique number of this size cannot be created.");
     }
@@ -26,7 +26,7 @@ void genarate_computer_unique_number(int *number, size_t number_size) {
     }
 }
 
-void BACAnalyzer(int& bulls, int& cows, int* number, int* user_number, size_t number_size, size_t input_size) {
+void BullsAndCowsGame::CalculateBullsAndCows(int& bulls, int& cows, int* number, int* user_number, size_t number_size, size_t input_size) {
     bulls = 0;
     cows = 0;
     if (number == nullptr) {
@@ -71,7 +71,8 @@ void BACAnalyzer(int& bulls, int& cows, int* number, int* user_number, size_t nu
     delete[] user_used;
 }
 
-void reformatted_user_number(int* user_number, int user_input, size_t number_size) {
+void BullsAndCowsGame::ConvertNumberToMass(int* user_number, int user_input, size_t number_size) {
+    if (pow(10,number_size) <= user_input || user_input < pow(10, number_size-1)) throw std::invalid_argument("user_input must have number_size digits");
     for (int i = 0; i < number_size; i++) {
         user_number[i] = user_input % 10;
         user_input /= 10;

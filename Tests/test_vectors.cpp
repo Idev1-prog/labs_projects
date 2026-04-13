@@ -247,9 +247,9 @@ TEST(MemDataTest, CopyConstructor) {
 
     EXPECT_EQ(copy.size(), original.size());
     EXPECT_EQ(copy.capacity(), original.capacity());
-    EXPECT_NE(copy.data(), original.data()); // Разные указатели
+    EXPECT_NE(copy.data(), original.data()); // ГђГ Г§Г­Г»ГҐ ГіГЄГ Г§Г ГІГҐГ«ГЁ
 
-    // Данные совпадают
+    // Г„Г Г­Г­Г»ГҐ Г±Г®ГўГЇГ Г¤Г ГѕГІ
     for (size_t i = 0; i < original.size(); ++i) {
         EXPECT_DOUBLE_EQ(copy.data()[i], original.data()[i]);
     }
@@ -262,11 +262,11 @@ TEST(MemDataTest, MoveConstructor) {
 
     MemData moved(std::move(original));
 
-    // Проверяем перемещенный объект
+    // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­Г­Г»Г© Г®ГЎГєГҐГЄГІ
     EXPECT_EQ(moved.size(), original_size);
     EXPECT_EQ(moved.data(), original_ptr);
 
-    // Проверяем исходный объект (должен быть пуст)
+    // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ ГЁГ±ГµГ®Г¤Г­Г»Г© Г®ГЎГєГҐГЄГІ (Г¤Г®Г«Г¦ГҐГ­ ГЎГ»ГІГј ГЇГіГ±ГІ)
     EXPECT_EQ(original.size(), 0);
     EXPECT_EQ(original.data(), nullptr);
     EXPECT_TRUE(original.is_empty());
@@ -280,19 +280,19 @@ TEST(MemDataTest, ClearMemory) {
 TEST(MemDataTest, SetMemory) {
     MemData md(5);
 
-    // Проверяем начальное состояние
+    // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ Г­Г Г·Г Г«ГјГ­Г®ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ
     size_t old_capacity = md.capacity();
     EXPECT_EQ(old_capacity, calculate_capacity(5));
 
-    // Вызываем set_memory
+    // Г‚Г»Г§Г»ГўГ ГҐГ¬ set_memory
     md.set_memory(20);
 
-    // Проверяем результат
+    // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ Г°ГҐГ§ГіГ«ГјГІГ ГІ
     EXPECT_EQ(md.capacity(), 20);
     EXPECT_NE(md.data(), nullptr);
 
-    // память выделена и работает
-    double* data = const_cast<double*>(md.data()); // снимаем const
+    // ГЇГ Г¬ГїГІГј ГўГ»Г¤ГҐГ«ГҐГ­Г  ГЁ Г°Г ГЎГ®ГІГ ГҐГІ
+    double* data = const_cast<double*>(md.data()); // Г±Г­ГЁГ¬Г ГҐГ¬ const
     data[0] = 42.0;
     EXPECT_DOUBLE_EQ(data[0], 42.0);
 }
@@ -324,14 +324,14 @@ TEST(MemDataTest, ResetMemory) {
     EXPECT_EQ(md.capacity(), 10);
     EXPECT_NE(md.data(), old_data);
 
-    // Данные сохранились
+    // Г„Г Г­Г­Г»ГҐ Г±Г®ГµГ°Г Г­ГЁГ«ГЁГ±Гј
     EXPECT_DOUBLE_EQ(md.data()[0], 1.0);
     EXPECT_DOUBLE_EQ(md.data()[1], 2.0);
     EXPECT_DOUBLE_EQ(md.data()[2], 3.0);
 }
 
 
-// ==================== ТЕСТЫ ОПЕРАТОРОВ ====================
+// ==================== Г’Г…Г‘Г’Г› ГЋГЏГ…ГђГЂГ’ГЋГђГЋГ‚ ====================
 
 TEST(MemDataTest, CopyAssignment) {
     MemData original = { 1.0, 2.0, 3.0 };

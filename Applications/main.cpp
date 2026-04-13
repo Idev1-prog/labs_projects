@@ -1,8 +1,8 @@
 #include <iostream>
 #include "geometry.h"
 #include "bulls_and_cows.h"
-//#define BULLS_AND_COWS
-#define GEOMETRY
+#define BULLS_AND_COWS
+//#define GEOMETRY
 using std::cout;
 using std::cin;
 using std::endl;
@@ -35,14 +35,14 @@ int main() {
 		}
 		int* computer_number = new int[user_dif_choice];
 		int user_input;
-		genarate_computer_unique_number(computer_number, user_dif_choice);
+		BullsAndCowsGame::GenarateComputerUniqueNumber(computer_number, user_dif_choice);
 		cout << "The number is hidden" << endl;
-		while (!check_win_codition_BAC(user_dif_choice, bulls)) {
+		while (!BullsAndCowsGame::CheckWin(user_dif_choice, bulls)) {
 			int* user_number = new int[user_dif_choice];
 			cout << "Enter the number you want to guess (the size of the number is " << user_dif_choice << " )" << endl;
 			cin >> user_input;
-			reformatted_user_number(user_number, user_input, user_dif_choice);
-			BACAnalyzer(bulls, cows, computer_number, user_number, user_dif_choice, user_dif_choice);
+			BullsAndCowsGame::ConvertNumberToMass(user_number, user_input, user_dif_choice);
+			BullsAndCowsGame::CalculateBullsAndCows(bulls, cows, computer_number, user_number, user_dif_choice, user_dif_choice);
 			cout << "Bulls: " << bulls << " Cows: " << cows << endl;
 			delete[] user_number;
 		}
