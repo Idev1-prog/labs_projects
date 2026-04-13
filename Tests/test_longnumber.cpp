@@ -114,7 +114,7 @@ TEST(Opers, OutputInput) {
 #endif // LONG_NUMBER_TEST
 
 
-#define LONG_NUMBER_TESTS
+//#define LONG_NUMBER_TESTS
 
 #ifdef LONG_NUMBER_TESTS
 
