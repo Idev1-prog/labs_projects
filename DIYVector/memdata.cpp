@@ -2,10 +2,9 @@
 #include <initializer_list>
 #include "memdata.h"
 
-int calculate_capacity(int size) {
-	if (size > 0)
-		return size += MEM_STEP;
-	else return 0;
+size_t calculate_capacity(size_t size) {
+	if (size == 0) return MEM_STEP; // experement
+	return size + MEM_STEP;
 }
 
 void MemData::clear_memory() noexcept {
@@ -61,15 +60,20 @@ MemData::~MemData() {
 }
 
 void MemData::reset_memory(size_t size, size_t start_index) noexcept {
-	size_t stage_size = _size;
-	double* buffer = new double[_size];
-	for (size_t i = start_index; i < (_size + start_index); ++i) {
-		buffer[i - start_index] = _data[i];
+	if (size == _capacity) return;
+
+	double* new_data = new double[size]();
+
+	size_t copy_size = (_size < size) ? _size : size;
+	for (size_t i = 0; i < copy_size; ++i) {
+		new_data[i] = _data[(start_index + i) % _capacity];
 	}
-	set_memory(size);
-	std::copy(buffer, buffer + size, _data);
-	_size =(stage_size <= size) ? stage_size : size;
-	delete[] buffer;
+
+	delete[] _data;
+
+	_data = new_data;
+	_capacity = size;
+	_size = copy_size; // не факт что надо
 }
 
 MemData& MemData::operator=(const MemData& other) noexcept {

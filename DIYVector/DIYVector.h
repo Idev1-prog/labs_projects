@@ -38,11 +38,23 @@ public:
 
     inline size_t size() const noexcept { return _mem.size(); }            // геттер размера
     inline size_t capacity() const noexcept { return _mem.capacity(); }        // геттер вместимости
-    inline double front() const { return _front; }                    // геттер первого элемента
-    inline double back() const { return _back; }                     // геттер последнего элемента
+    inline double front() const { 
+        if (!_mem._size) throw std::out_of_range("Attempting to work with an empty array element");
+        return _mem._data[_front]; 
+    }                    // геттер первого элемента
+    inline double back() const {
+        if (!_mem._size) throw std::out_of_range("Attempting to work with an empty array element");
+        return _mem._data[_back]; 
+    }                     // геттер последнего элемента
 
-    inline double& front() { return _mem._data[_front]; }                         // сеттер первого элемента
-    inline double& back() { return _mem._data[_back]; };                          // сеттер последнего элемента
+    inline double& front() { 
+        if (!_mem._size) throw std::out_of_range("Attempting to work with an empty array element");
+        return _mem._data[_front]; 
+    }                         // сеттер первого элемента
+    inline double& back() { 
+        if (!_mem._size) throw std::out_of_range("Attempting to work with an empty array element");
+        return _mem._data[_back]; 
+    };                          // сеттер последнего элемента
 
     void push_front(double) noexcept;               // вставка элемента в начало
     void push_back(double) noexcept;                // вставка элемента в конец
@@ -50,9 +62,13 @@ public:
     void pop_front();                               // удаление элемента из начала
     void pop_back();                                // удаление элемента из конца
     void erase(size_t);                             // удаление элемента по позиции
+    void pop_front_few(size_t count) { for (int i = 0; i < count; ++i) pop_front(); }
+    void pop_back_few(size_t count) { for (int i = 0; i < count; ++i) pop_back(); }
+    void push_front_few(double*, size_t) noexcept; //It inserts elements from the input array one by one
+    void push_back_few(double*, size_t) noexcept; //It inserts elements from the input array one by one
 
     Vector& operator=(const Vector&) noexcept;      // оператор присваивания
-    Vector& operator=(Vector&&) noexcept;           // оператор присваивания с move-семантикой
+    Vector& operator=(Vector&&) noexcept;         // оператор присваивания с move-семантикой
 
     double operator[](size_t) const noexcept;       // оператор обращения по индексу константный
     double& operator[](size_t) noexcept;            // оператор обращения по индексу

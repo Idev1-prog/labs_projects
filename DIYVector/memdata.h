@@ -3,7 +3,7 @@
 
 #define MEM_STEP 15
 
-int calculate_capacity(int);
+size_t calculate_capacity(size_t);
 
 class Vector;
 
