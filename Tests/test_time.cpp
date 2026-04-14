@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CTime.h"
-#define TIME_TEST
+//#define TIME_TEST
 
 #ifdef TIME_TEST
 

@@ -365,8 +365,8 @@ TEST(MemDataTest, MoveAssignment) {
 
 #endif // AI_TEST
 
-#define MAIN_VECTOR_TEST
-#define CUSTOM_VECTOR_TEST
+//#define MAIN_VECTOR_TEST
+//#define CUSTOM_VECTOR_TEST
 
 #ifdef MAIN_VECTOR_TEST
 // Main Tests

@@ -2,8 +2,9 @@
 #include "Fraction.h"
 #include <string>
 #include <algorithm>
+#include <stdexcept>
 
-//Euclidean Algorithm for GCD(Revised Approach)
+// Euclidean Algorithm for GCD (Revised Approach)
 int gcd(int a, int b) {
 	a = std::abs(a);
 	b = std::abs(b);
@@ -55,7 +56,7 @@ Fraction::Fraction(std::string input_str) {
 
 	size_t pos = input_str.find('/');
 
-	if (pos == std::string::npos) { // npos - separator not found
+	if (pos == std::string::npos) {
 		try {
 			_up = std::stoi(input_str);
 			_down = 1;

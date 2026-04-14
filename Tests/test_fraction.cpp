@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Fraction.h"
-//#define FRACTION_TEST
+#define FRACTION_TEST
 
 #ifdef FRACTION_TEST
 TEST(FractionTest, Constructors) {
