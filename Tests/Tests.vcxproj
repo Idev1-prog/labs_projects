@@ -57,7 +57,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>C:\Users\T2390\source\repos\Idev1-prog\labs_projects\DIYVector;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\DIYVector;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\LongNumber;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\LongNumber;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BattleGame;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\DIYVector;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\DIYVector;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\LongNumber;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\LongNumber;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CDate;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Fraction;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\Complex;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;C:\Users\Ivan\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\CTime;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\geometry_lib;C:\Users\T2390\source\repos\Idev1-prog\labs_projects\BullsAndCowsLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -101,6 +101,7 @@
     <ClInclude Include="test_func.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="battle_game_test.cpp" />
     <ClCompile Include="test_bulls_and_cows.cpp" />
     <ClCompile Include="test_complex.cpp" />
     <ClCompile Include="test_date.cpp" />
@@ -122,6 +123,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BattleGame\BattleGame.vcxproj">
+      <Project>{f320ff27-b752-4f01-952e-e604d1b4011a}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\BullsAndCowsLib\BullsAndCowsLib.vcxproj">
       <Project>{06f839b8-73cf-4f06-a8e1-b680e4ad6d95}</Project>
     </ProjectReference>
