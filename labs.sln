@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DIYVector", "DIYVector\DIYV
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GamesClasses", "GamesClasses\GamesClasses.vcxproj", "{0ACE799A-38F4-4F4C-99F0-D1EFFE8113F5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BattleGame", "BattleGame\BattleGame.vcxproj", "{F320FF27-B752-4F01-952E-E604D1B4011A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -141,6 +143,14 @@ Global
 		{0ACE799A-38F4-4F4C-99F0-D1EFFE8113F5}.Release|x64.Build.0 = Release|x64
 		{0ACE799A-38F4-4F4C-99F0-D1EFFE8113F5}.Release|x86.ActiveCfg = Release|Win32
 		{0ACE799A-38F4-4F4C-99F0-D1EFFE8113F5}.Release|x86.Build.0 = Release|Win32
+		{F320FF27-B752-4F01-952E-E604D1B4011A}.Debug|x64.ActiveCfg = Debug|x64
+		{F320FF27-B752-4F01-952E-E604D1B4011A}.Debug|x64.Build.0 = Debug|x64
+		{F320FF27-B752-4F01-952E-E604D1B4011A}.Debug|x86.ActiveCfg = Debug|Win32
+		{F320FF27-B752-4F01-952E-E604D1B4011A}.Debug|x86.Build.0 = Debug|Win32
+		{F320FF27-B752-4F01-952E-E604D1B4011A}.Release|x64.ActiveCfg = Release|x64
+		{F320FF27-B752-4F01-952E-E604D1B4011A}.Release|x64.Build.0 = Release|x64
+		{F320FF27-B752-4F01-952E-E604D1B4011A}.Release|x86.ActiveCfg = Release|Win32
+		{F320FF27-B752-4F01-952E-E604D1B4011A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RightFraction.h"
 #include <stdexcept>
-#define TEST_RIGHT_FRACTION
+//#define TEST_RIGHT_FRACTION
 
 #ifdef TEST_RIGHT_FRACTION
 
