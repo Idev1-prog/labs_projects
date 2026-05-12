@@ -222,3 +222,44 @@ std::istream& operator>>(std::istream& in, Vector& vector) {
 
 	return in;
 }
+
+void shaker_sort(Vector& vec) noexcept {
+	const size_t n = vec.size();
+	if (n <= 1) return;
+	bool swapped = true;
+	size_t start = 0;
+	size_t end = n - 1;
+
+	while (swapped) {
+		swapped = false;
+
+		for (size_t i = start; i < end; ++i) {
+			if (vec[i] > vec[i + 1]) {
+				std::swap(vec[i], vec[i + 1]);
+				swapped = true;
+			}
+		}
+
+		if (!swapped) break;
+		--end;
+		swapped = false;
+
+		for (size_t i = end; i > start; --i) {
+			if (vec[i] < vec[i - 1]) {
+				std::swap(vec[i], vec[i - 1]);
+				swapped = true;
+			}
+		}
+		++start;
+	}
+}
+
+void shuffle(Vector& vec) noexcept {
+	const size_t n = vec.size();
+	if (n <= 1) return;
+
+	for (size_t i = n - 1; i > 0; --i) {
+		size_t j = static_cast<size_t>(rand() % (i + 1));
+		std::swap(vec[i], vec[j]);
+	}
+}

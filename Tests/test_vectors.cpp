@@ -1,9 +1,10 @@
 #include "pch.h"
 #include "memdata.h"
 #include "DIYVector.h"
-//#define AI_TEST
-//#define AI_TEST_PLUS
-//#define MEMDATA_TESTS
+#define AI_TEST
+#define AI_TEST_PLUS
+#define MEMDATA_TESTS
+#define SORT_SHUFFLE_TEST
 
 #ifdef MEMDATA_TESTS
 
@@ -920,3 +921,36 @@ TEST(ClassVector, can_assigment) {
 }
 
 #endif // CUSTOM_VECTOR_TEST
+
+#ifdef SORT_SHUFFLE_TEST
+TEST(VectorAlgorithmsTest, SortsTest) {
+    Vector vec{ 3.5, -2.1, 8.0, 0.0, -2.1, 15.7, 1.3 };
+
+    shaker_sort(vec);
+
+    EXPECT_EQ(vec.size(), 7);
+
+    for (size_t i = 1; i < vec.size(); ++i) {
+        EXPECT_LE(vec[i - 1], vec[i]);
+    }
+
+    EXPECT_DOUBLE_EQ(vec.front(), -2.1);  //min
+    EXPECT_DOUBLE_EQ(vec.back(), 15.7);   //max
+}
+
+TEST(VectorAlgorithmsTest, ShuffleTest) {
+    Vector vec{ 1.0, 2.0, 3.0, 4.0, 5.0 };
+    Vector original(vec);
+
+    shuffle(vec);
+
+    EXPECT_EQ(vec.size(), original.size());
+
+    shaker_sort(vec);
+    shaker_sort(original);
+
+    for (size_t i = 0; i < vec.size(); ++i) {
+        EXPECT_DOUBLE_EQ(vec[i], original[i]);
+    }
+}
+#endif // SORT_SHUFFLE_TEST

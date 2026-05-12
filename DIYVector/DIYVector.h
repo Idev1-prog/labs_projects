@@ -75,6 +75,9 @@ public:
 
     friend std::ostream& operator<<(std::ostream&, const Vector&);     // вывод
     friend std::istream& operator>>(std::istream&, Vector&);           // ввод
+
+    friend void shaker_sort(Vector& vec) noexcept;   // шейкерная сортировка
+    friend void shuffle(Vector& vec) noexcept;       // перемешивание
 };
 
 

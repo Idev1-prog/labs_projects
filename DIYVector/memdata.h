@@ -44,5 +44,6 @@ public:
     MemData& operator=(const MemData&) noexcept;         // оператор присваивания
     MemData& operator=(MemData&&) noexcept;              // оператор присваивания с move-семантикой
 
+
     friend class Vector;
 };
