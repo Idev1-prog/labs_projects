@@ -1,12 +1,12 @@
 #include "pch.h"
-#include "Cherecters.h"
+//#include "Cherecters.h"
 /*
 Возможно есть смысл сделать Google Mock тесты для рандома (если будет время)
 */
 
-#define WARRIOR_TEST
-#define NECROLIT_TEST
-#define TRICKSTER_TEST
+//#define WARRIOR_TEST
+//#define NECROLIT_TEST
+//#define TRICKSTER_TEST
 
 #ifdef WARRIOR_TEST
 

@@ -131,38 +131,44 @@ std::string Fraction::mixed_form() const {
 }
 
 Fraction& Fraction::operator+=(const Fraction& other) {
-	_up = _up * other._down + other._up * _down;
-	_down = _down * other._down;
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
+	_up = _up * cpy._down + cpy._up * _down;
+	_down = _down * cpy._down;
 	simplify();
-	check_invariant();
 	return *this;
 }
 
 Fraction& Fraction::operator-=(const Fraction& other) {
-	_up = _up * other._down - other._up * _down;
-	_down = _down * other._down;
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
+	_up = _up * cpy._down - cpy._up * _down;
+	_down = _down * cpy._down;
 	simplify();
-	check_invariant();
 	return *this;
 }
 
 Fraction& Fraction::operator*=(const Fraction& other) {
-	_up *= other._up;
-	_down *= other._down;
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
+	_up *= cpy._up;
+	_down *= cpy._down;
 	simplify();
-	check_invariant();
 	return *this;
 }
 
 Fraction& Fraction::operator/=(const Fraction& other) {
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
 	_up *= other._down;
 	_down *= other._up;
 	simplify();
-	check_invariant();
 	return *this;
 }
 
 Fraction& Fraction::operator=(const Fraction& other) {
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
 	if (this != &other) {
 		_up = other._up;
 		_down = other._down;
@@ -197,7 +203,9 @@ Fraction Fraction::operator/(const Fraction& other) const {
 }
 
 bool Fraction::operator==(const Fraction& other) const {
-	return (_up * other._down) == (_down * other._up);
+	auto cpy = (*this).to_improper();
+	auto cpy_other = other.to_improper();
+	return (cpy._up * cpy_other._down) == (cpy._down * cpy_other._up);
 }
 
 bool Fraction::operator!=(const Fraction& other) const {
@@ -205,11 +213,15 @@ bool Fraction::operator!=(const Fraction& other) const {
 }
 
 bool Fraction::operator<(const Fraction& other) const {
-	return (_up * other._down) < (_down * other._up);
+	auto cpy = (*this).to_improper();
+	auto cpy_other = other.to_improper();
+	return (cpy._up * cpy_other._down) < (cpy._down * cpy_other._up);
 }
 
 bool Fraction::operator>(const Fraction& other) const {
-	return (_up * other._down) > (_down * other._up);
+	auto cpy = (*this).to_improper();
+	auto cpy_other = other.to_improper();
+	return (cpy._up * cpy_other._down) > (cpy._down * cpy_other._up);
 }
 
 bool Fraction::operator<=(const Fraction& other) const {

@@ -4,7 +4,7 @@
 class Fraction {
 protected:
 	int _up, _down;
-	void simplify();
+	virtual void simplify();
 	virtual void check_invariant() const;
 
 public:
@@ -13,6 +13,7 @@ public:
 	Fraction(int up) : _up(up), _down(1) {}
 	Fraction(std::string);
 	Fraction(const Fraction& other) : _up(other._up), _down(other._down) {}
+	virtual Fraction to_improper() const { return *this; }
 
 	inline int up() const noexcept { return _up; }
 	inline int down() const noexcept { return _down; }
@@ -23,7 +24,7 @@ public:
 	virtual void up(int);
 	virtual void down(int);
 
-	virtual void to_improper(int& num, int& den) const {
+	virtual void to_improper(int& num, int& den) {
 		num = _up;
 		den = _down;
 	}

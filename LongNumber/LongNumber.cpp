@@ -258,7 +258,7 @@ std::ostream& operator<<(std::ostream& out, const LongNumber& num) {
 	return out;
 }
 
-std::istream& operator>>(std::istream& in, LongNumber num) {
+std::istream& operator>>(std::istream& in, LongNumber& num) {
 	std::string str;
 	std::getline(in, str);
 	num.number(str);

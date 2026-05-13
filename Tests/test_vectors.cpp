@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "memdata.h"
 #include "DIYVector.h"
-#define AI_TEST
-#define AI_TEST_PLUS
-#define MEMDATA_TESTS
-#define SORT_SHUFFLE_TEST
+//#define AI_TEST
+//#define AI_TEST_PLUS
+//#define MEMDATA_TESTS
+//#define SORT_SHUFFLE_TEST
 
 #ifdef MEMDATA_TESTS
 

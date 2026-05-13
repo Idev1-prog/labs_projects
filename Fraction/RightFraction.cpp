@@ -27,15 +27,25 @@ void RightFraction::extract_whole() {
     if (_whole == 0 && total_up < 0) {
         _up = -_up;
     }
+}
 
-    simplify();
+void RightFraction::simplify() {
+    extract_whole();
+    Fraction::simplify();
 }
 
 void RightFraction::check_invariant() const {}
 
-void RightFraction::to_improper(int& num, int& den) const {
+void RightFraction::to_improper(int& num, int& den) {
     num = (_whole >= 0) ? (_whole * _down + _up) : (_whole * _down - _up);
     den = _down;
+    _whole = 0;
+}
+
+Fraction RightFraction::to_improper() const {
+    int num = (_whole >= 0) ? (_whole * _down + _up) : (_whole * _down - _up);
+    int den = _down;
+    return Fraction(num, den);
 }
 
 RightFraction::RightFraction(int whole, int up, int down)
@@ -43,7 +53,7 @@ RightFraction::RightFraction(int whole, int up, int down)
     if (down == 0) throw std::invalid_argument("division by zero");
     _up = up;
     _down = down;
-    extract_whole();
+    simplify();
 }
 
 RightFraction::RightFraction(int up, int down)
@@ -51,14 +61,14 @@ RightFraction::RightFraction(int up, int down)
     if (down == 0) throw std::invalid_argument("division by zero");
     _up = up;
     _down = down;
-    extract_whole();
+    simplify();
 }
 
 RightFraction::RightFraction(int up)
     : Fraction(0, 1), _whole(0) {
     _up = up;
     _down = 1;
-    extract_whole();
+    simplify();
 }
 
 RightFraction::RightFraction(const std::string& str)
@@ -94,14 +104,14 @@ RightFraction::RightFraction(const std::string& str)
         }
     }
     if (_down == 0) throw std::invalid_argument("division by zero");
-    extract_whole();
+    simplify();
 }
 
 RightFraction::RightFraction(const Fraction& other)
     : Fraction(0, 1), _whole(0) {
     _up = other.up();
     _down = other.down();
-    extract_whole();
+    simplify();
 }
 
 std::string RightFraction::to_string() const {
@@ -118,65 +128,65 @@ RightFraction& RightFraction::operator=(const Fraction& other) {
     _up = other.up();
     _down = other.down();
     _whole = 0;
-    extract_whole();
-    return *this;
-}
-
-RightFraction& RightFraction::operator+=(const Fraction& other) {
-    int num1, den1, num2, den2;
-    this->to_improper(num1, den1);
-    other.to_improper(num2, den2);
-
-    _up = num1 * den2 + num2 * den1;
-    _down = den1 * den2;
-    _whole = 0;
-
     simplify();
-    extract_whole();
     return *this;
 }
 
-RightFraction& RightFraction::operator-=(const Fraction& other) {
-    int num1, den1, num2, den2;
-    this->to_improper(num1, den1);
-    other.to_improper(num2, den2);
+//RightFraction& RightFraction::operator+=(const Fraction& other) {
+//    int num1, den1, num2, den2;
+//    this->to_improper(num1, den1);
+//    other.to_improper(num2, den2);
+//
+//    _up = num1 * den2 + num2 * den1;
+//    _down = den1 * den2;
+//    _whole = 0;
+//
+//    simplify();
+//    extract_whole();
+//    return *this;
+//}
 
-    _up = num1 * den2 - num2 * den1;
-    _down = den1 * den2;
-    _whole = 0;
-
-    simplify();
-    extract_whole();
-    return *this;
-}
-
-RightFraction& RightFraction::operator*=(const Fraction& other) {
-    int num1, den1, num2, den2;
-    this->to_improper(num1, den1);
-    other.to_improper(num2, den2);
-
-    _up = num1 * num2;
-    _down = den1 * den2;
-    _whole = 0;
-
-    simplify();
-    extract_whole();
-    return *this;
-}
-
-RightFraction& RightFraction::operator/=(const Fraction& other) {
-    int num1, den1, num2, den2;
-    this->to_improper(num1, den1);
-    other.to_improper(num2, den2);
-
-    _up = num1 * den2;
-    _down = den1 * num2;
-    _whole = 0;
-
-    simplify();
-    extract_whole();
-    return *this;
-}
+//RightFraction& RightFraction::operator-=(const Fraction& other) {
+//    int num1, den1, num2, den2;
+//    this->to_improper(num1, den1);
+//    other.to_improper(num2, den2);
+//
+//    _up = num1 * den2 - num2 * den1;
+//    _down = den1 * den2;
+//    _whole = 0;
+//
+//    simplify();
+//    //extract_whole();
+//    return *this;
+//}
+//
+//RightFraction& RightFraction::operator*=(const Fraction& other) {
+//    int num1, den1, num2, den2;
+//    this->to_improper(num1, den1);
+//    other.to_improper(num2, den2);
+//
+//    _up = num1 * num2;
+//    _down = den1 * den2;
+//    _whole = 0;
+//
+//    simplify();
+//    //extract_whole();
+//    return *this;
+//}
+//
+//RightFraction& RightFraction::operator/=(const Fraction& other) {
+//    int num1, den1, num2, den2;
+//    this->to_improper(num1, den1);
+//    other.to_improper(num2, den2);
+//
+//    _up = num1 * den2;
+//    _down = den1 * num2;
+//    _whole = 0;
+//
+//    simplify();
+//    //extract_whole();
+//    return *this;
+//}
 
 void RightFraction::up(int up_val) {
     _up = up_val;
@@ -187,35 +197,35 @@ void RightFraction::down(int down_val) {
     Fraction::down(down_val);
 }
 
-bool RightFraction::operator==(const Fraction& other) const {
-    int num1, den1, num2, den2;
-    this->to_improper(num1, den1);
-    other.to_improper(num2, den2);
-    return num1 * den2 == num2 * den1;
-}
+//bool RightFraction::operator==(const Fraction& other) const {
+//    int num1, den1, num2, den2;
+//    this->to_improper(num1, den1);
+//    other.to_improper(num2, den2);
+//    return num1 * den2 == num2 * den1;
+//}
 
-bool RightFraction::operator!=(const Fraction& other) const {
-    return !(*this == other);
-}
+//bool RightFraction::operator!=(const Fraction& other) const {
+//    return !(*this == other);
+//}
 
-bool RightFraction::operator<(const Fraction& other) const {
-    int num1, den1, num2, den2;
-    this->to_improper(num1, den1);
-    other.to_improper(num2, den2);
-    return num1 * den2 < num2 * den1;
-}
+//bool RightFraction::operator<(const Fraction& other) const {
+//    int num1, den1, num2, den2;
+//    this->to_improper(num1, den1);
+//    other.to_improper(num2, den2);
+//    return num1 * den2 < num2 * den1;
+//}
+//
+//bool RightFraction::operator>(const Fraction& other) const {
+//    int num1, den1, num2, den2;
+//    this->to_improper(num1, den1);
+//    other.to_improper(num2, den2);
+//    return num1 * den2 > num2 * den1;
+//}
 
-bool RightFraction::operator>(const Fraction& other) const {
-    int num1, den1, num2, den2;
-    this->to_improper(num1, den1);
-    other.to_improper(num2, den2);
-    return num1 * den2 > num2 * den1;
-}
-
-bool RightFraction::operator<=(const Fraction& other) const {
-    return !(other < *this);
-}
-
-bool RightFraction::operator>=(const Fraction& other) const {
-    return !(*this < other);
-}
+//bool RightFraction::operator<=(const Fraction& other) const {
+//    return !(other < *this);
+//}
+//
+//bool RightFraction::operator>=(const Fraction& other) const {
+//    return !(*this < other);
+//}

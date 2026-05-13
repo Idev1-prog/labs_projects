@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "LongNumber.h"
 
-//#define LONG_NUMBER_TEST
+#define LONG_NUMBER_TEST
 
 #ifdef LONG_NUMBER_TEST
 
@@ -9,7 +9,7 @@
 TEST(BasicMethods, SetsGets) {
 	LongNumber a = LongNumber();
 	EXPECT_EQ(a.sign(), true);
-	EXPECT_EQ(a.number(), "");
+	EXPECT_EQ(a.number(), "0");
 
 	LongNumber b = LongNumber("-348174617323748185787390136128942647727856893722789562384467");
 	EXPECT_EQ(b.number(), "-348174617323748185787390136128942647727856893722789562384467");
@@ -107,14 +107,19 @@ TEST(Opers, PrefPost) {
 TEST(Opers, OutputInput) {
 	LongNumber nm1("10");
 	LongNumber nm2("-12563");
-	EXPECT_NO_THROW(std::cout << nm2 << std::endl);
-	EXPECT_NO_THROW(std::cin >> nm1);
+    std::stringstream input("1379466745643573753");
+    std::stringstream output;
+	EXPECT_NO_THROW(output << nm2);
+	EXPECT_NO_THROW(input >> nm1);
+
+    EXPECT_EQ(output.str(), "-12563");
+    EXPECT_EQ("1379466745643573753", nm1.to_string());
 }
 
 #endif // LONG_NUMBER_TEST
 
 
-//#define LONG_NUMBER_TESTS
+#define LONG_NUMBER_TESTS
 
 #ifdef LONG_NUMBER_TESTS
 

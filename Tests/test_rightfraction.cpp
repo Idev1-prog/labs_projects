@@ -84,7 +84,7 @@ TEST(RightFractionTest, WholeExtractionFromImproper) {
 
 TEST(RightFractionTest, AdditionWithFraction) {
     RightFraction rf1(1, 3, 4);
-    Fraction f2(1, 2);
+    RightFraction f2(0, 1, 2);
     rf1 += f2;
     EXPECT_EQ(rf1.whole(), 2);
     EXPECT_EQ(rf1.up(), 1);
@@ -93,18 +93,18 @@ TEST(RightFractionTest, AdditionWithFraction) {
 
 TEST(RightFractionTest, SubtractionWithFraction) {
     RightFraction rf1(2, 3, 4);
-    Fraction f2(1, 2);
+    RightFraction f2(1, 1, 2);
     rf1 -= f2;
-    EXPECT_EQ(rf1.whole(), 2);
+    EXPECT_EQ(rf1.whole(), 1);
     EXPECT_EQ(rf1.up(), 1);
     EXPECT_EQ(rf1.down(), 4);
 }
 
 TEST(RightFractionTest, MultiplicationWithFraction) {
     RightFraction rf1(1, 1, 2);
-    Fraction f2(2, 1);
+    RightFraction f2(-2, 2, 1);
     rf1 *= f2;
-    EXPECT_EQ(rf1.whole(), 3);
+    EXPECT_EQ(rf1.whole(), -6);
     EXPECT_EQ(rf1.up(), 0);
     EXPECT_EQ(rf1.down(), 1);
 }
@@ -165,8 +165,8 @@ TEST(RightFractionTest, ToStringWithNegativeFraction) {
 TEST(RightFractionTest, SetUpMethod) {
     RightFraction rf(1, 2, 3);
     rf.up(5);
-    EXPECT_EQ(rf.whole(), 1);
-    EXPECT_EQ(rf.up(), 5);
+    EXPECT_EQ(rf.whole(), 2);
+    EXPECT_EQ(rf.up(), 2);
     EXPECT_EQ(rf.down(), 3);
 }
 
