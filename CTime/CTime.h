@@ -28,9 +28,9 @@ public:
 	void second(char);
 
 	// addition methods
-	CTime add_hours(char hours);
-	CTime add_minutes(char minutes);
-	CTime add_seconds(char seconds);
+	CTime add_hours(int hours);
+	CTime add_minutes(int minutes);
+	CTime add_seconds(int seconds);
 };
 
 CTime::CTime() {
@@ -66,12 +66,11 @@ CTime::CTime(const CTime& other) {
 	_second = other._second;
 }
 
-CTime::CTime(char hour, char minute) {
+CTime::CTime(char hour, char minute): _second(0) {
 	if (hour < 0 || hour > 23) throw std::out_of_range(HOURS_ERR_MESSAGE);
 	if (minute < 0 || minute > 59) throw std::out_of_range(MINUTES_ERR_MESSAGE);
 	_hour = hour;
 	_minute = minute;
-	_second = 0;
 }
 
 void CTime::hour(char hour) {
@@ -89,14 +88,19 @@ void CTime::second(char second) {
 	this->_second = second;
 }
 
-CTime CTime::add_hours(char hours) {
+CTime CTime::add_hours(int hours) {
 	CTime res(*this);
+	hours = hours % 24;
 	res._hour = (res._hour + hours) % 24;
 	return res;
 }
 
-CTime CTime::add_minutes(char minutes) {
+CTime CTime::add_minutes(int minutes) {
 	CTime res(*this);
+	while (minutes > 60) {
+		res._hour = (res._hour + 1) % 24;
+		minutes -= 60;
+	}
 	int total_minutes = res._minute + minutes;
 	int extra_hours = total_minutes / 60;
 	res._minute = total_minutes % 60;
@@ -104,8 +108,12 @@ CTime CTime::add_minutes(char minutes) {
 	return res;
 }
 
-CTime CTime::add_seconds(char seconds) {
+CTime CTime::add_seconds(int seconds) {
 	CTime res(*this);
+	while (seconds > 60) {
+		res._minute = (res._minute + 1) % 24;
+		seconds -= 60;
+	}
 	int total_seconds = res._second + seconds;
 	int extra_minutes = total_seconds / 60;
 	res._second = total_seconds % 60;

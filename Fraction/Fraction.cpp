@@ -2,8 +2,9 @@
 #include "Fraction.h"
 #include <string>
 #include <algorithm>
+#include <stdexcept>
 
-//Euclidean Algorithm for GCD(Revised Approach)
+// Euclidean Algorithm for GCD (Revised Approach)
 int gcd(int a, int b) {
 	a = std::abs(a);
 	b = std::abs(b);
@@ -34,6 +35,8 @@ void Fraction::simplify() {
 	}
 }
 
+void Fraction::check_invariant() const {}
+
 Fraction::Fraction(int up, int down) {
 	if (down == 0) {
 		throw std::invalid_argument("division by zero");
@@ -41,6 +44,7 @@ Fraction::Fraction(int up, int down) {
 	_up = up;
 	_down = down;
 	simplify();
+	check_invariant();
 }
 
 Fraction::Fraction(std::string input_str) {
@@ -52,10 +56,12 @@ Fraction::Fraction(std::string input_str) {
 
 	size_t pos = input_str.find('/');
 
-	if (pos == std::string::npos) { // npos - separator not found
+	if (pos == std::string::npos) {
 		try {
 			_up = std::stoi(input_str);
 			_down = 1;
+			simplify();
+			check_invariant();
 		}
 		catch (const std::exception& e) {
 			throw std::invalid_argument("Invalid number format");
@@ -78,6 +84,7 @@ Fraction::Fraction(std::string input_str) {
 			}
 
 			simplify();
+			check_invariant();
 		}
 		catch (const std::exception& e) {
 			throw std::invalid_argument("Invalid number format");
@@ -85,9 +92,10 @@ Fraction::Fraction(std::string input_str) {
 	}
 }
 
-void Fraction::up(int up) noexcept {
+void Fraction::up(int up) {
 	_up = up;
 	simplify();
+	check_invariant();
 }
 
 void Fraction::down(int down) {
@@ -96,9 +104,10 @@ void Fraction::down(int down) {
 	}
 	_down = down;
 	simplify();
+	check_invariant();
 }
 
-std::string Fraction::to_string(){
+std::string Fraction::to_string() const {
 	if (_down == 1) {
 		return std::to_string(_up);
 	}
@@ -107,28 +116,50 @@ std::string Fraction::to_string(){
 	}
 }
 
+std::string Fraction::mixed_form() const {
+	int whole = _up / _down;
+	int remainder = std::abs(_up % _down);
+	if (whole == 0) {
+		return to_string();
+	}
+	else if (remainder == 0) {
+		return std::to_string(whole);
+	}
+	else {
+		return std::to_string(whole) + " " + std::to_string(remainder) + "/" + std::to_string(_down);
+	}
+}
+
 Fraction& Fraction::operator+=(const Fraction& other) {
-	_up = _up * other._down + other._up * _down;
-	_down = _down * other._down;
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
+	_up = _up * cpy._down + cpy._up * _down;
+	_down = _down * cpy._down;
 	simplify();
 	return *this;
 }
 
 Fraction& Fraction::operator-=(const Fraction& other) {
-	_up = _up * other._down - other._up * _down;
-	_down = _down * other._down;
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
+	_up = _up * cpy._down - cpy._up * _down;
+	_down = _down * cpy._down;
 	simplify();
 	return *this;
 }
 
 Fraction& Fraction::operator*=(const Fraction& other) {
-	_up *= other._up;
-	_down *= other._down;
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
+	_up *= cpy._up;
+	_down *= cpy._down;
 	simplify();
 	return *this;
 }
 
 Fraction& Fraction::operator/=(const Fraction& other) {
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
 	_up *= other._down;
 	_down *= other._up;
 	simplify();
@@ -136,11 +167,14 @@ Fraction& Fraction::operator/=(const Fraction& other) {
 }
 
 Fraction& Fraction::operator=(const Fraction& other) {
+	to_improper(_up, _down);
+	auto cpy = other.to_improper();
 	if (this != &other) {
 		_up = other._up;
 		_down = other._down;
 	}
 	simplify();
+	check_invariant();
 	return *this;
 }
 
@@ -169,7 +203,9 @@ Fraction Fraction::operator/(const Fraction& other) const {
 }
 
 bool Fraction::operator==(const Fraction& other) const {
-	return (_up * other._down) == (_down * other._up);
+	auto cpy = (*this).to_improper();
+	auto cpy_other = other.to_improper();
+	return (cpy._up * cpy_other._down) == (cpy._down * cpy_other._up);
 }
 
 bool Fraction::operator!=(const Fraction& other) const {
@@ -177,11 +213,15 @@ bool Fraction::operator!=(const Fraction& other) const {
 }
 
 bool Fraction::operator<(const Fraction& other) const {
-	return (_up * other._down) < (_down * other._up);
+	auto cpy = (*this).to_improper();
+	auto cpy_other = other.to_improper();
+	return (cpy._up * cpy_other._down) < (cpy._down * cpy_other._up);
 }
 
 bool Fraction::operator>(const Fraction& other) const {
-	return (_up * other._down) > (_down * other._up);
+	auto cpy = (*this).to_improper();
+	auto cpy_other = other.to_improper();
+	return (cpy._up * cpy_other._down) > (cpy._down * cpy_other._up);
 }
 
 bool Fraction::operator<=(const Fraction& other) const {
