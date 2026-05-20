@@ -707,6 +707,20 @@ TEST(ClassVector, throw_when_try_insert_with_wrong_position) {
     EXPECT_THROW(vec.insert(-1, 10), std::out_of_range);
 }
 
+TEST(ClassVector, can_insert_few) {
+    Vector vec1({ 1, 3, 5, 7, 9 });
+    double data[] = { 11, 12, 13 };
+    vec1.insert_few(data, 2, 3);
+    EXPECT_DOUBLE_EQ(vec1[1], 3);
+    EXPECT_DOUBLE_EQ(vec1[2], 11);
+    EXPECT_DOUBLE_EQ(vec1[3], 12);
+    EXPECT_DOUBLE_EQ(vec1[4], 13);
+    EXPECT_DOUBLE_EQ(vec1[5], 5);
+    
+    EXPECT_DOUBLE_EQ(vec1[0], 1);
+    EXPECT_DOUBLE_EQ(vec1[7], 9);
+}
+
 TEST(ClassVector, can_pop_front) {
     Vector vec({ 1, 5 , 7 });
     vec.pop_front();
@@ -914,6 +928,16 @@ TEST(ClassVector, throw_when_try_erase_from_empty_vector) {
 TEST(ClassVector, throw_when_try_erase_with_wrong_position) {
     Vector vec({ 1, 2, 3 });
     EXPECT_THROW(vec.erase(5), std::out_of_range);
+}
+
+TEST(ClassVector, can_erase_few) {
+    Vector vec1({ 1, 3, 5, 7, 9 });
+    std::pair<size_t, size_t> cut(1, 3);
+    vec1.erase_few(cut);
+    EXPECT_DOUBLE_EQ(vec1[0], 1);
+    EXPECT_DOUBLE_EQ(vec1[1], 7);
+    EXPECT_DOUBLE_EQ(vec1[2], 9);
+
 }
 
 TEST(ClassVector, can_assigment) {

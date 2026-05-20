@@ -114,6 +114,36 @@ void Vector::insert(double num, size_t index) {
 	(*this)[index] = num;
 }
 
+void Vector::insert_few(double* elem, size_t index, size_t count) {
+	if (index > _mem._size || index < 0) {
+		throw std::out_of_range("Insert index out of range");
+	}
+
+	if (_mem._size == 0 || index == _mem._size) {
+		push_back_few(elem, count);
+		return;
+	}
+
+	if (index == 0) {
+		push_front_few(elem, count);
+		return;
+	}
+
+	for (int i = 0; i < count; ++i) {
+		advance_back();
+		_mem._size++;
+	}
+	optimize_mem();
+
+	size_t logical_end = _mem._size - 1;
+	for (size_t i = logical_end; i > index; --i) {
+		(*this)[i] = (*this)[i - count];
+	}
+	for (size_t j = 0; j < count; ++j) {
+		(*this)[index + j] = elem[j];
+	}
+}
+
 void Vector::erase(size_t index) {
 	if (index >= _mem._size || index < 0) {
 		throw std::out_of_range("Erase index out of range");
@@ -141,6 +171,37 @@ void Vector::erase(size_t index) {
 	_mem._size--;
 	retreat_back();
 }
+
+void Vector::erase_few(std::pair<size_t, size_t> slice) {
+	size_t count = slice.second - slice.first;
+	if (count == 0) return;
+	if (slice.second >= _mem._size || slice.first >= _mem._size){
+		throw std::out_of_range("Erase index out of range");
+	}
+
+	if (_mem._size == 0) {
+		throw std::logic_error("Cannot erase from empty vector");
+	}
+
+	optimize_mem();
+
+	// просто решил не запариваться, выйгрыша от оптимизации как в insert_few нет
+	if (_mem._size == 1 || (count == 1 && slice.first == _mem._size - 1)) {
+		pop_back();
+		return;
+	}
+	if ((slice.second == slice.first) && slice.first == 0) {
+		pop_front();
+		return;
+	}
+
+	for (size_t i = slice.first; i < _mem._size - 1; ++i) {
+		(*this)[i] = (*this)[i + count];
+	}
+	_mem._size -= count;
+	for (int i = 0; i < count; ++i) retreat_back();
+}
+
 
 void Vector::push_front_few(double* numbers, size_t count) noexcept {
 	for (int i = 0; i < count; ++i) {

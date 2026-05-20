@@ -66,6 +66,11 @@ public:
     void pop_back_few(size_t count) { for (int i = 0; i < count; ++i) pop_back(); }
     void push_front_few(double*, size_t) noexcept; //It inserts elements from the input array one by one
     void push_back_few(double*, size_t) noexcept; //It inserts elements from the input array one by one
+    void insert_few(double* elem, size_t index, size_t count);
+    /*
+    @param slice -> (first index, last index), the element at the last index is not deleted
+    */
+    void erase_few(std::pair<size_t, size_t> slice);
 
     Vector& operator=(const Vector&) noexcept;      // оператор присваивания
     Vector& operator=(Vector&&) noexcept;         // оператор присваивания с move-семантикой
