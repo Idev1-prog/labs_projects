@@ -1,7 +1,8 @@
 #include "pch.h"
 #include "LongNumber.h"
 
-#define LONG_NUMBER_TEST
+//#define LONG_NUMBER_TEST
+//#define LONG_NUMBER_TESTS
 
 #ifdef LONG_NUMBER_TEST
 
@@ -119,7 +120,6 @@ TEST(Opers, OutputInput) {
 #endif // LONG_NUMBER_TEST
 
 
-#define LONG_NUMBER_TESTS
 
 #ifdef LONG_NUMBER_TESTS
 

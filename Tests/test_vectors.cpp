@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "memdata.h"
 #include "DIYVector.h"
-//#define AI_TEST
-//#define AI_TEST_PLUS
-//#define MEMDATA_TESTS
-//#define SORT_SHUFFLE_TEST
+#define AI_TEST
+#define AI_TEST_PLUS
+#define MEMDATA_TESTS
+#define SORT_SHUFFLE_TEST
 
 #ifdef MEMDATA_TESTS
 
@@ -366,8 +366,8 @@ TEST(MemDataTest, MoveAssignment) {
 
 #endif // AI_TEST
 
-//#define MAIN_VECTOR_TEST
-//#define CUSTOM_VECTOR_TEST
+#define MAIN_VECTOR_TEST
+#define CUSTOM_VECTOR_TEST
 
 #ifdef MAIN_VECTOR_TEST
 // Main Tests
@@ -690,6 +690,15 @@ TEST(ClassVector, can_insert_to_front) {
     Vector vec({ 1, 5 , 3 });
     vec.insert(3, 0);
     EXPECT_DOUBLE_EQ(vec.front(), 3);
+}
+
+TEST(ClassVector, can_insert_to_back) {
+    Vector vec1;
+    vec1.insert(7, 0);
+    EXPECT_DOUBLE_EQ(vec1[0], 7);
+
+    vec1.insert(5, 1);
+    EXPECT_DOUBLE_EQ(vec1[1], 5);
 }
 
 TEST(ClassVector, throw_when_try_insert_with_wrong_position) {

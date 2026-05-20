@@ -93,18 +93,13 @@ void Vector::insert(double num, size_t index) {
 	}
 
 	optimize_mem();
-	if (_mem._size == 0) {
+	if (_mem._size == 0 || index == _mem._size) {
 		push_back(num);
 		return;
 	}
 
 	if (index == 0) {
 		push_front(num);
-		return;
-	}
-
-	if (index == _mem._size) {
-		push_back(num);
 		return;
 	}
 
@@ -130,16 +125,12 @@ void Vector::erase(size_t index) {
 
 	optimize_mem();
 
-	if (_mem._size == 1) {
+	if (_mem._size == 1 || index == (_mem._size - 1)) {
 		pop_back();
 		return;
 	}
 	if (index == 0) {
 		pop_front();
-		return;
-	}
-	if (index == (_mem._size - 1)) {
-		pop_back();
 		return;
 	}
 
