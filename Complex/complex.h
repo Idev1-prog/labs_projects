@@ -18,10 +18,8 @@ public:
 	Complex operator + (const Complex&) const;
 	Complex operator - (const Complex&) const;
 	Complex operator * (const Complex&) const;
-	//Complex operator / (const Complex&); TBD
 	Complex& operator += (const Complex&);
 	Complex& operator -= (const Complex&);
-
 	Complex& operator=(const Complex& other);
 	Complex operator/(const Complex& other) const;
 	Complex& operator/=(const Complex& other);

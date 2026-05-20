@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CDate.h"
-//#define DATE_TEST
+#define DATE_TEST
 
 #ifdef DATE_TEST
 
